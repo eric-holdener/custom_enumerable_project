@@ -74,6 +74,21 @@ module Enumerable
       arr
     end
   end
+
+  def my_none?
+    arr = []
+    self.my_each do |value|
+      tf = yield value
+      if tf == false
+        arr.push(tf)
+      end
+    end
+    if arr.length == length
+      true
+    else
+      false
+    end
+  end
 end
 
 # You will first have to define my_each
