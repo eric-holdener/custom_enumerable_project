@@ -64,6 +64,16 @@ module Enumerable
       calculation
     end
   end
+
+  def my_map
+    if block_given?
+      arr = []
+      self.my_each do |value|
+        arr.push(yield value)
+      end
+      arr
+    end
+  end
 end
 
 # You will first have to define my_each
