@@ -89,6 +89,17 @@ module Enumerable
       false
     end
   end
+
+  def my_select
+    arr = []
+    self.my_each do |value|
+      tf = yield value
+      if tf == true
+        arr.push(value)
+      end
+    end
+    arr
+  end
 end
 
 # You will first have to define my_each
