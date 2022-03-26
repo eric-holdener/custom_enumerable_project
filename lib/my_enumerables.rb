@@ -16,6 +16,19 @@ module Enumerable
   end
 
   def my_any?
+    is_true = false
+    self.my_each do |value|
+      tf = yield value
+      if tf == true
+        is_true = true
+        break
+      end
+    end
+    if is_true == true
+      true
+    else
+      false
+    end
   end
 
   def my_each
