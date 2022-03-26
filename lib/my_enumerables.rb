@@ -30,6 +30,21 @@ module Enumerable
       false
     end
   end
+
+  def my_count
+    if block_given?
+      arr = []
+      self.my_each do |value|
+        tf = yield value
+        if tf == true
+          arr.push(value)
+        end
+      end
+      arr.length
+    else
+      length
+    end
+  end
 end
 
 # You will first have to define my_each
