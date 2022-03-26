@@ -55,6 +55,15 @@ module Enumerable
     end
     self
   end
+
+  def my_inject(calculation = 0)
+    if block_given?
+      self.my_each do |value|
+        calculation = yield(calculation, value)
+      end
+      calculation
+    end
+  end
 end
 
 # You will first have to define my_each
