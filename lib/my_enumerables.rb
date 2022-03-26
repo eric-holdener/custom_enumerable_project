@@ -1,22 +1,31 @@
 module Enumerable
   # Your code goes here
-  def my_all?(&blk)
-    if block_given?
-      i = 0
-      arr = []
-      while i < self.length
-        tf = blk.call(self[i])
-        if tf == true
-          arr.push(self[i])
-        end
-        i += 1
-      end
-      if arr.length == self.length
-        true
-      else
-        false
+  def my_all?
+    arr = []
+    self.my_each do |value|
+      tf = yield value
+      if tf == true
+        arr.push(tf)
       end
     end
+    if arr.length == length
+      true
+    else
+      false
+    end
+  end
+
+  def my_any?
+  end
+
+  def my_each
+    return to_enum(:my_each) unless block_given?
+    i = 0
+    while i < length
+      yield self[i]
+      i += 1
+    end
+    self
   end
 end
 
